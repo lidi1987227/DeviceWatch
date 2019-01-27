@@ -26,7 +26,7 @@ export default class CompanyManage extends React.Component {
           renderTabBar={this._renderTabBar}
         >
           <List renderHeader={() => ''} className="my-list">
-            <List.Item multipleLine extra="extra content" onClick={()=>window.goRoute('companyDetail')}>
+            <List.Item multipleLine extra="extra content" onClick={()=>window.goRoute(window.routeMap.companyDetail)}>
               Title <List.Item.Brief>subtitle</List.Item.Brief>
             </List.Item>
           </List>

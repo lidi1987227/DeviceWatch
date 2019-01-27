@@ -20,7 +20,7 @@ export default class TaskManage extends React.Component {
       <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>任务管理</NavBar>
       <WhiteSpace />
       <List renderHeader={() => ''} className="my-list">
-            <List.Item multipleLine extra="extra content" onClick={()=>window.goRoute('taskDetail')}>
+            <List.Item multipleLine extra="extra content" onClick={()=>window.goRoute(window.routeMap.taskDetail)}>
               Title <List.Item.Brief>subtitle</List.Item.Brief>
             </List.Item>
           </List>

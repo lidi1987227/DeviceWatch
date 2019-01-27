@@ -27,5 +27,5 @@ function renderRoute(routeMap){
   let keys = Object.keys(routeMap);
   return keys.map((key,index)=><Route key={index} path={key} component={routeMap[key]} />)
 }
-window.goRoute('deviceWatch');
+window.goRoute(window.routeMap.deviceWatch);
 
