@@ -6,9 +6,9 @@ export default class MainPage extends React.Component {
     super(props);
     this.munuList=[
       {title:'统计分析',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:window.routeMap.statisticlAnalysis},
-      {title:'企业管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:'companyManage'},
-      {title:'设备管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:'companyManage'},
-      {title:'任务管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:'companyManage'},
+      {title:'企业管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:window.routeMap.companyManage},
+      {title:'设备管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:window.routeMap.deviceManage},
+      {title:'任务管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:window.routeMap.taskManage},
       {title:'监督检查',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:'companyManage'},
       {title:'隐患管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:'companyManage'}
     ];

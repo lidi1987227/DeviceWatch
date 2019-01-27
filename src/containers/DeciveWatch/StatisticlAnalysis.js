@@ -5,6 +5,6 @@ const mapStateToProps = (state) => ({
   test: state.deviceWatch.test
 });
 
-const mapDispatchToProps = (state) => ({});
+const mapDispatchToProps = () => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(StatisticlAnalysis)
