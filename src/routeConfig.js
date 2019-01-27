@@ -21,15 +21,15 @@ export const routeMap = {
   supervisoryReview:'/supervisoryReview',
 };
 const routeConfig = {
-  [routeMap.deviceWatch]:MainPage,
-  [routeMap.statisticlAnalysis]:StatisticlAnalysis,
-  [routeMap.companyManage]:CompanyManage,
-  [routeMap.companyDetail]:CompanyDetail,
-  [routeMap.deviceManage]:DeviceManage,
-  [routeMap.deviceDetail]:DeviceDetail,
-  [routeMap.taskManage]:TaskManage,
-  [routeMap.taskDetail]:TaskDetail,
-  [routeMap.supervisoryReview]:SupervisoryReview,
+  [routeMap.deviceWatch]:MainPage,//智慧市场监管
+  [routeMap.statisticlAnalysis]:StatisticlAnalysis,//统计分析
+  [routeMap.companyManage]:CompanyManage,//企业管理
+  [routeMap.companyDetail]:CompanyDetail,//企业详情
+  [routeMap.deviceManage]:DeviceManage,//设备管理
+  [routeMap.deviceDetail]:DeviceDetail,//设备详情
+  [routeMap.taskManage]:TaskManage,//任务管理
+  [routeMap.taskDetail]:TaskDetail,//任务详情
+  [routeMap.supervisoryReview]:SupervisoryReview,//监督检查
 };
 
 export default routeConfig;
