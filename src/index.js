@@ -2,23 +2,30 @@ import React from 'react';
 import {createStore} from 'redux';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
+import { HashRouter , Route, hashHistory } from 'react-router-dom';
 import reducers from './ducks';
-
+import 'service';
 import './theme/index.less';
-
-import MainPage from './containers/DeciveWatch/MainPage';
+import routeConfig,{routeMap} from './routeConfig';
 
 let store = createStore(reducers);
 window.$getState = store.getState;
 window.$dispatch = store.dispatch;
+window.routeMap=routeMap;
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path="/" component={MainPage}>
-        <Route path="s1" component={MainPage} />
-      </Route>
-    </Router>
-  </Provider>
-  
-, document.getElementById('root'));
+    <HashRouter basename='/'>
+      <div>
+        {renderRoute(routeConfig)}
+      </div>
+    </HashRouter>
+  </Provider>,
+  document.getElementById('root')
+);
+
+function renderRoute(routeMap){
+  let keys = Object.keys(routeMap);
+  return keys.map((key,index)=><Route key={index} path={key} component={routeMap[key]} />)
+}
+window.goRoute(window.routeMap.deviceWatch);
+

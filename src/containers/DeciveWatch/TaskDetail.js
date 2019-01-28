@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import MainPage from '../../components/DeciveWatch/MainPage'
+import TaskDetail from '../../components/DeciveWatch/TaskDetail'
 
 const mapStateToProps = (state) => ({
   test: state.deviceWatch.test
@@ -7,4 +7,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (state) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage)
+export default connect(mapStateToProps, mapDispatchToProps)(TaskDetail)
