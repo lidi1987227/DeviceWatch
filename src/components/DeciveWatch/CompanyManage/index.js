@@ -1,21 +1,20 @@
 import React from 'react';
 import { NavBar, Icon, WhiteSpace, Tabs, SearchBar,List,Brief } from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
+import { getAllCompanyList } from "../../../sdk";
 
 export default class CompanyManage extends React.Component {
   constructor(props) {
     super(props);
     this.munuList = [
-      { title: 'First Tab' },
+      { title: '全部' },
       { title: 'Second Tab' },
       { title: 'Third Tab' },
     ];
+    getAllCompanyList();
   }
   render() {
-    let { test } = this.props;
-    const data1 = Array.from(new Array(6)).map(() => ({
-      icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
-    }));
+    let { companyList=[] } = this.props;
     return <div>
       <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>企业管理</NavBar>
       <SearchBar placeholder="请输入企业名称、联系人名称、关键词" maxLength={100} />
@@ -26,9 +25,13 @@ export default class CompanyManage extends React.Component {
           renderTabBar={this._renderTabBar}
         >
           <List renderHeader={() => ''} className="my-list">
-            <List.Item multipleLine extra="extra content" onClick={()=>window.goRoute(window.routeMap.companyDetail)}>
-              Title <List.Item.Brief>subtitle</List.Item.Brief>
-            </List.Item>
+            {companyList.map((company) => {
+              return <List.Item multipleLine key={company.id} onClick={() => window.goRoute(window.routeMap.companyDetail)}>
+                {company.name} 
+                <List.Item.Brief>{`${company.contact} ${company.contactNo}`}</List.Item.Brief>
+                <List.Item.Brief>{`${company.province}省${company.city}市${company.district}区${company.street}街道${company.detailAddress}`}</List.Item.Brief>
+              </List.Item>
+            })}
           </List>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
             Content of second tab
