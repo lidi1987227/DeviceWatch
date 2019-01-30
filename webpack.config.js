@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
-
+const webpackDev = require('webpack-dev-server');
 const Visualizer = require('webpack-visualizer-plugin'); // remove it in production environment.
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // remove it in production environment.
 const otherPlugins = process.argv[1].indexOf('webpack-dev-server') >= 0 ? [] : [
@@ -95,5 +95,18 @@ module.exports = {
     }),
     new ExtractTextPlugin({ filename: '[name].css', allChunks: true }),
     ...otherPlugins
-  ]
+  ],
+  devServer: {
+    contentBase: './', //本地服务器所加载的页面所在的目录
+    historyApiFallback: true, //不跳转
+    inline:true,
+		port: 8080, //设置默认监听端口，如果省略，默认为”8080“
+    proxy: {
+        '/api': {
+            // target: 'http://47.101.48.215:18081/',
+            target: 'http://47.101.48.215:10081/',
+            pathRewrite: {"^/api" : "/redirect?code=442b3e71-098b-4918-a7eb-f39b5668065b8081/"}//这里把/api换成/SSM
+        }
+    }
+  },
 }

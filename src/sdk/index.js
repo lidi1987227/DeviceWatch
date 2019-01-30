@@ -1,4 +1,3 @@
-import  "./ajax";
 const init_Main_Page_Data = 'deviceWatch/initMainPageData';
 
 const initState = {
