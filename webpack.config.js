@@ -103,9 +103,8 @@ module.exports = {
 		port: 8080, //设置默认监听端口，如果省略，默认为”8080“
     proxy: {
         '/api': {
-            // target: 'http://47.101.48.215:18081/',
             target: 'http://47.101.48.215:10081/',
-            pathRewrite: {"^/api" : "/redirect?code=442b3e71-098b-4918-a7eb-f39b5668065b8081/"}//这里把/api换成/SSM
+            // pathRewrite: {"^/api" : "/"}//这里把/api换成/SSM
         }
     }
   },
