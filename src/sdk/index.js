@@ -1,12 +1,5 @@
-const init_Main_Page_Data = 'deviceWatch/initMainPageData';
+import * as deviceManage from './deviceManage';
 
-const initState = {
-  testData: 'test'
-};
+export const getAllDevice = deviceManage.getAllDevice;
 
-export default function reducer(state = initState, action) {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
+window.getAllDevice=getAllDevice;

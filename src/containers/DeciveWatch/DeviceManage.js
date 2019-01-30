@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import DeviceManage from '../../components/DeciveWatch/DeviceManage'
 
 const mapStateToProps = (state) => ({
-  test: state.deviceWatch.test
+  deviceList: state.device.deviceList
 });
 
 const mapDispatchToProps = (state) => ({});
