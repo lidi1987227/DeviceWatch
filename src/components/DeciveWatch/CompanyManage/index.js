@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavBar, Icon, WhiteSpace, Tabs, SearchBar,List,Brief } from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
-import { getAllCompanyList } from "../../../sdk";
+import { getAllCompanyList,getCompanyDetail } from "../../../sdk";
 
 export default class CompanyManage extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class CompanyManage extends React.Component {
         >
           <List renderHeader={() => ''} className="my-list">
             {companyList.map((company) => {
-              return <List.Item multipleLine key={company.id} onClick={() => window.goRoute(window.routeMap.companyDetail)}>
+              return <List.Item multipleLine key={company.id} onClick={() => this._openCompanyDetail(company.id)}>
                 {company.name} 
                 <List.Item.Brief>{`${company.contact} ${company.contactNo}`}</List.Item.Brief>
                 <List.Item.Brief>{`${company.province}省${company.city}市${company.district}区${company.street}街道${company.detailAddress}`}</List.Item.Brief>
@@ -48,5 +48,10 @@ export default class CompanyManage extends React.Component {
     return (<Sticky>
       {({ style }) => <div style={{ ...style, zIndex: 1 }}><Tabs.DefaultTabBar {...props} /></div>}
     </Sticky>);
+  }
+  _openCompanyDetail = (id) => {
+    getCompanyDetail(id).then(()=>{
+      window.goRoute(window.routeMap.companyDetail);
+    });
   }
 }

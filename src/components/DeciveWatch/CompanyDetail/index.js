@@ -12,7 +12,9 @@ export default class CompanyManage extends React.Component {
     ];
   }
   render() {
-    let { test } = this.props;
+    let { companyDetail } = this.props;
+    // ! 临时打印
+    console.warn("companyDetail",companyDetail);
     const data1 = Array.from(new Array(6)).map(() => ({
       icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
     }));

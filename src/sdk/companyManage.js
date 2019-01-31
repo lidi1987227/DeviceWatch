@@ -1,6 +1,7 @@
-import { setCompanyList } from '../ducks/company';
+import { setCompanyList,setCompanyDetail } from '../ducks/company';
 /**
  * 获取所有企业列表
+ * conditions ＝ { name = "", contact = "", companyType = "", page = 0, size = 0 }；
  */
 export const getAllCompanyList = (conditions={}) => {
   let { name = "", contact = "", companyType = "", page = 0, size = 0 } = conditions;
@@ -30,26 +31,32 @@ export const getAllCompanyList = (conditions={}) => {
 
 };
 
-
-export const getCompanyDetail = () => {
-  ajax({
-    type: "get",
-    url: "/api/device/company/list?page=0&size=0",
-    timeOut: 5000,
-    before: function () {
-      console.log("before");
-    },
-    success: function (str) {
-      let data = JSON.parse(str);
-      if (data.code === 200) {
-        setCompanyList(data.data.list)
-      } else {
-        window.alert(data.message);
+/**
+ * 获取企业详情
+ * id - 企业主键id
+ */
+export const getCompanyDetail = (id) => {
+  return new Promise((resolve,reject)=>{
+    ajax({
+      type: "get",
+      url: "/api/device/company/detail/"+id,
+      timeOut: 5000,
+      before: function () {
+        console.log("before");
+      },
+      success: function (str) {
+        let data = JSON.parse(str);
+        if (data.code === 200) {
+          resolve(data.data); //!111111
+          setCompanyDetail(data.data);
+        } else {
+          window.alert(data.message);
+        }
+      },
+      error: function () {
+        window.alert("请求失败，请稍后重试。");
+        reject("getCompanyDetail error");  //!11111111
       }
-    },
-    error: function () {
-      window.alert("请求失败，请稍后重试。");
-    }
+    });
   });
-
 };
