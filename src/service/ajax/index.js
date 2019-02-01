@@ -115,7 +115,7 @@
         //若是post提交，则设置content-Type 为application/x-www-four-urlencoded
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
       } else if (contentType) {
-        xhr.setRequestHeader("Content-Type", contentType);
+        xhr.setRequestHeader("Authorization", contentType);
       }
       //添加监听
       xhr.onreadystatechange = function () {
@@ -163,5 +163,42 @@
       createXHR();
     }
   }
+
+  const ajaxGet = (url) => {
+    return new Promise((resolve,reject)=>{
+      ajax({
+        type: "get",
+        url: url,
+        // contentType:"Bearer 10dbb529-be4f-4dd7-a9b9-1c6b985f760b",
+        contentType:window.token?window.token:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU0OTYzNjQ2NiwiaWF0IjoxNTQ5MDMxNjY2fQ.PmeN3HfjHiav6QQhJ0fFX8BHPZ1NWiVM0xPXV__q_C8Ye6raf8Oh6CX8sHi2_Gz_MgWEuoaMbe9fPrfn4_kryA",
+        timeOut: 5000,
+        before: function (berf) {
+          console.log("before",berf);
+        },
+        success: function (str) {
+          let data = JSON.parse(str);
+          if (data.code === 200) {
+            resolve(data.data); 
+          } else {
+            window.alert(data.message);
+            reject({errCode:data.code,errMsg:data.message});
+          }
+        },
+        error: function (errCode,errMsg) {
+          window.alert("请求失败，请稍后重试。","错误");
+          reject({errCode,errMsg});
+        }
+      });
+    });
+  };
+  //获取token
+  const getToken = () => {
+    ajaxGet("/api/auth/verify?code=10dbb529-be4f-4dd7-a9b9-1c6b985f760b").then((data)=>{
+      window.token = "Bearer " + data.token;
+    });
+  }
+  // 每次登录重新获取token
+  getToken();
+  window.ajaxGet = ajaxGet;
   window.ajax = ajax;
 })(window);
