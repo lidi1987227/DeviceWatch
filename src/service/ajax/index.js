@@ -73,6 +73,7 @@
     }
     //设置请求超时
     function setTime(callback, script) {
+      error = options.error || function () { }; //错误执行的函数
       if (timeOut !== undefined) {
         timeout_flag = setTimeout(function () {
           if (dataType === "jsonp") {
@@ -83,8 +84,7 @@
             timeout_bool = true;
             xhr && xhr.abort();
           }
-          console.log("timeout");
-
+          error(404,"request time out, Please retry leater!");
         }, timeOut);
       }
     }
@@ -185,7 +185,11 @@
           }
         },
         error: function (errCode,errMsg) {
-          window.alert("请求失败，请稍后重试。","错误");
+          if (errCode === 404) {
+            window.alert(errMsg,"错误");
+          } else {
+            window.alert("请求失败，请稍后重试。","错误");
+          }
           reject({errCode,errMsg});
         }
       });

@@ -8,6 +8,8 @@ import TaskManage from './containers/DeciveWatch/TaskManage';
 import TaskDetail from './containers/DeciveWatch/TaskDetail';
 import SupervisoryReview from './containers/DeciveWatch/SupervisoryReview';
 
+import InfiniteList from './components/Common/InfiniteListBackUp'
+
 
 export const routeMap = {
   deviceWatch:'/deviceWatch',
@@ -19,6 +21,7 @@ export const routeMap = {
   taskManage:'/taskManage',
   taskDetail:'/taskDetail',
   supervisoryReview:'/supervisoryReview',
+  example:'/example',
 };
 const routeConfig = {
   [routeMap.deviceWatch]:MainPage,//智慧市场监管
@@ -30,6 +33,7 @@ const routeConfig = {
   [routeMap.taskManage]:TaskManage,//任务管理
   [routeMap.taskDetail]:TaskDetail,//任务详情
   [routeMap.supervisoryReview]:SupervisoryReview,//监督检查
+  [routeMap.example]:InfiniteList,//示例
 };
 
 export default routeConfig;

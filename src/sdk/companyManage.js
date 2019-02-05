@@ -1,17 +1,19 @@
-import { setCompanyList,setCompanyDetail } from '../ducks/company';
+import { setCompanyList,setCompanyMore,setCompanyDetail } from '../ducks/company';
 /**
  * 获取所有企业列表
  * conditions ＝ { name = "", contact = "", companyType = "", page = 0, size = 0 }；
  */
-export const getAllCompanyList = (conditions={}) => {
-  let { name = "", contact = "", companyType = "", page = 0, size = 20 } = conditions;
+export const getAllCompanyList = (conditions={},isMore=false) => {
+  let { name = "", contact = "", companyType = 0, page = 1, size = 20 } = conditions;
   let url = "/api/device/company/list?" + "page=" + page + "&size=" + size;
   name !== "" ? url += `&name=${name}` : null;
   contact !== "" ? url += `&contact=${contact}` : null;
-  companyType !== "" ? url += `&companyType=${companyType}` : null;
+  companyType !== "" && companyType !== 0 ? url += `&companyType=${companyType}` : null;
+  console.log("getAllCompanyList current page is ",page,"current type is ",companyType);
   try {
-    ajaxGet(url).then((data) => {
-      setCompanyList(data.list)
+    return ajaxGet(url).then((data) => {
+      isMore?setCompanyMore(data.list,companyType):
+      setCompanyList(data.list,companyType);
     });
   } catch (error) {
     console.log("getAllCompanyList error",error);

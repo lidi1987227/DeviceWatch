@@ -13,6 +13,6 @@ const defaultBtnArray = [
 ]
 
 //Modal.alert(title, message, btnArray:[{text, onPress, style},{text:btnText}], platform?)
-export const Confirm = (title, message, btnArray) => (
+export const Confirm = (message, title="提示", btnArray) => (
   Modal.alert(title, message, btnArray === undefined ? defaultBtnArray : btnArray, "ios")
 );
