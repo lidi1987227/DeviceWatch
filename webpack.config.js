@@ -4,15 +4,15 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const webpackDev = require('webpack-dev-server');
-const Visualizer = require('webpack-visualizer-plugin'); // remove it in production environment.
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // remove it in production environment.
+// const Visualizer = require('webpack-visualizer-plugin'); // ! 1.remove it in production environment.
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; //! 2. remove it in production environment.
 const otherPlugins = process.argv[1].indexOf('webpack-dev-server') >= 0 ? [] : [
-  new Visualizer(), // remove it in production environment.
-  new BundleAnalyzerPlugin({
-    defaultSizes: 'parsed',
-    // generateStatsFile: true,
-    statsOptions: { source: false }
-  }), // remove it in production environment.
+  // new Visualizer(), //! 3. remove it in production environment.
+  // new BundleAnalyzerPlugin({
+  //   defaultSizes: 'parsed',
+  //   // generateStatsFile: true,
+  //   statsOptions: { source: false }
+  // }), //! 4. remove it in production environment.
 ];
 
 const postcssOpts = {
