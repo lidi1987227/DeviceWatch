@@ -1,19 +1,22 @@
 import React from 'react';
-import { NavBar, Icon, WhiteSpace, Tabs, SearchBar,List,Brief } from 'antd-mobile';
+import { NavBar, Icon, WhiteSpace, Tabs, SearchBar, List, Brief } from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
+import BasicDetail from "./BasicDetail";
+import CredentialDetail from "./CredentialDetail";
+import EquipmentDetail from "./EquipmentDetail";
 
 export default class CompanyManage extends React.Component {
   constructor(props) {
     super(props);
     this.munuList = [
-      { title: 'First Tab' },
-      { title: 'Second Tab' },
-      { title: 'Third Tab' },
+      { title: '基本信息' },
+      { title: '单位资质' },
+      { title: '设备信息' },
     ];
   }
   render() {
     let { companyDetail } = this.props;
-    // ! 临时打印
+    let { deviceList } = companyDetail;
     console.warn("companyDetail",companyDetail);
     const data1 = Array.from(new Array(6)).map(() => ({
       icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
@@ -27,17 +30,9 @@ export default class CompanyManage extends React.Component {
           initalPage={'t2'}
           renderTabBar={this._renderTabBar}
         >
-          <List renderHeader={() => ''} className="my-list">
-            <List.Item multipleLine extra="extra content" onClick={()=>window.goRoute(window.routeMap.companyDetail)}>
-              Title <List.Item.Brief>subtitle</List.Item.Brief>
-            </List.Item>
-          </List>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
-            Content of second tab
-        </div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
-            Content of third tab
-        </div>
+          <BasicDetail companyDetail={companyDetail} />
+          <CredentialDetail companyDetail={companyDetail} />
+          <EquipmentDetail deviceList={deviceList} />
         </Tabs>
       </StickyContainer>
       <WhiteSpace />

@@ -57,6 +57,7 @@ export default class InfiniteList extends React.Component {
       pageSize=20,  //列表分页大小
       list,         //列表数据
       onEndReached, //滚动到底部触发
+      className,    //
     } = this.props;
 
     return (
@@ -68,7 +69,7 @@ export default class InfiniteList extends React.Component {
           {'Loading...'}
         </div>)}
         renderRow={renderRow}
-        className="infinite-list"
+        className={"infinite-list " + className}
         pageSize={pageSize}
         useBodyScroll
         onScroll={() => { /*console.log('scroll');*/ }}

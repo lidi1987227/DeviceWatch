@@ -19,9 +19,8 @@ export default class CompanyManage extends React.Component {
       { title: '维修单位', companyType:115, pageIndex:1, },
       { title: '充装单位', companyType:116, pageIndex:1, },
     ];
-    this.pageIndex = 1;
     this.isRequesting = false;
-    getAllCompanyList({page:this.pageInde});
+    getAllCompanyList();
   }
   render() {
     return <div>
@@ -59,14 +58,14 @@ export default class CompanyManage extends React.Component {
     let compList = this.props[listName]||[];
     console.log("company manage render tab content,listName is ",listName);
     console.warn("company render tab list is ",compList);
-    return <List className="my-list" key={index}>
-      <InfiniteList
+    return <InfiniteList
+        key={index}
+        className="company-list"
         list={compList}
         renderRow={this._renderRowItem}
         pageSize={20}
         onEndReached={this._getNewList(index)}
-      />
-    </List>;
+      />;
   }
   _renderRowItem = (rowData, sectionID, rowID)=>{
     let { companyList=[] } = this.props;
@@ -75,6 +74,7 @@ export default class CompanyManage extends React.Component {
       multipleLine
       key={company.id}
       thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+      // thumbStyle={{width:"60px",height:"60px"}}
       onClick={() => this._openCompanyDetail(company.id)}>
       {company.name}
       <List.Item.Brief>{`${company.contact} ${company.contactNo}`}</List.Item.Brief>
