@@ -2,7 +2,7 @@ import React from 'react';
 import { NavBar, Icon, WhiteSpace, Tabs, SearchBar,List,Brief } from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 
-export default class TaskDetail extends React.Component {
+export default class CheckDetail extends React.Component {
   constructor(props) {
     super(props);
     this.munuList = [
@@ -12,10 +12,11 @@ export default class TaskDetail extends React.Component {
     ];
   }
   render() {
-    let { test } = this.props;
+    let { checkDetail } = this.props;
     const data1 = Array.from(new Array(6)).map(() => ({
       icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
     }));
+    console.warn("checkDetail",checkDetail);
     return <div>
       <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>任务详情</NavBar>
 

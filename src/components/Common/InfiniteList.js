@@ -29,7 +29,7 @@ export default class InfiniteList extends React.Component {
     // setTimeout(() => this.lv.scrollTo(0, 120), 800);
 
     // simulate initial Ajax
-    let {list} = this.props;
+    let {list=[]} = this.props;
     setTimeout(() => {
       this.rData = genData(list);
       this.setState({

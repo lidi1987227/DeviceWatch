@@ -1,7 +1,9 @@
-import { setCompanyList,setCompanyMore,setCompanyDetail,setCompanyMaxPage } from '../ducks/company';
+import { setCompanyList,setCompanyMore,setCompanyDetail } from '../ducks/company';
 /**
  * 获取所有企业列表
- * conditions ＝ { name = "", contact = "", companyType = "", page = 0, size = 0 }；
+ * @param {object} conditions ＝ { name = "", contact = "", companyType = "", page = 0, size = 0 }；
+ * @param {boolean} isMore 是否加载更多
+ * @returns {Promise} ajax promise result
  */
 export const getAllCompanyList = (conditions={},isMore=false) => {
   let { name = "", contact = "", companyType = 0, page = 1, size = 20 } = conditions;
@@ -22,7 +24,8 @@ export const getAllCompanyList = (conditions={},isMore=false) => {
 
 /**
  * 获取企业详情
- * id - 企业主键id
+ * @param {number} id - 企业主键id
+ * @returns {null} null
  */
 export const getCompanyDetail = async (id) => {
   let url = "/api/device/company/detail/"+id;
