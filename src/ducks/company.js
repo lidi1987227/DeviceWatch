@@ -4,7 +4,7 @@ const SET_COMPANY_DETAIL = 'company/setCompanyDetail';
 const SET_MORE_COMPANY_LIST = 'company/setCompanyMore';
 
 const initState = {
-  companyList: [],
+  companyList: {},
   companyDetail:{},
 };
 
@@ -18,8 +18,8 @@ export default function reducer(state = initState, action) {
       return Object.assign({}, state, newState);
     case SET_MORE_COMPANY_LIST:
       listName = action.companyType === 0 ? "companyList" : "companyList" + action.companyType;
-      newList = state[listName]?state[listName].concat(action.list):[];
-      newState[listName] = newList;
+      newList = state[listName]?state[listName].list.concat(action.list.list):[];
+      newState[listName] = Object.assign({},action.list,{list:newList});
       return Object.assign({}, state, newState);
     case SET_COMPANY_DETAIL:
       return Object.assign({}, state, { companyDetail: action.companyDetail });

@@ -1,4 +1,4 @@
-import { setCompanyList,setCompanyMore,setCompanyDetail } from '../ducks/company';
+import { setCompanyList,setCompanyMore,setCompanyDetail,setCompanyMaxPage } from '../ducks/company';
 /**
  * 获取所有企业列表
  * conditions ＝ { name = "", contact = "", companyType = "", page = 0, size = 0 }；
@@ -12,8 +12,8 @@ export const getAllCompanyList = (conditions={},isMore=false) => {
   console.log("getAllCompanyList current page is ",page,"current type is ",companyType);
   try {
     return ajaxGet(url).then((data) => {
-      isMore?setCompanyMore(data.list,companyType):
-      setCompanyList(data.list,companyType);
+      isMore?setCompanyMore(data,companyType):
+      setCompanyList(data,companyType);
     });
   } catch (error) {
     console.log("getAllCompanyList error",error);

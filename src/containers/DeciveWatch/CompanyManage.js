@@ -2,9 +2,10 @@ import { connect } from 'react-redux'
 import CompanyManage from '../../components/DeciveWatch/CompanyManage'
 
 const mapStateToProps = (state) => {
-  let props = {};
+  let props = {
+  };
   Object.keys(state.company).forEach((item)=>{
-    if (item.indexOf("companyList" !== -1)) {
+    if (item.indexOf("companyList") !== -1) {
       props[item] = state.company[item];
     }
   });

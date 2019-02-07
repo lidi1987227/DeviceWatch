@@ -55,7 +55,8 @@ export default class CompanyManage extends React.Component {
   _renderTabContent = (index) => {
     let type = this.munuList[index].companyType;
     let listName = type === 0 ? "companyList" : "companyList"+type;
-    let compList = this.props[listName]||[];
+    let compList = this.props[listName] && this.props[listName].list||[];
+    let maxPage = this.props[listName] && this.props[listName].pages || 1;
     console.log("company manage render tab content,listName is ",listName);
     console.warn("company render tab list is ",compList);
     return <InfiniteList
@@ -64,12 +65,13 @@ export default class CompanyManage extends React.Component {
         list={compList}
         renderRow={this._renderRowItem}
         pageSize={20}
+        hasNoMore = {this.munuList[index].pageIndex >= maxPage}
         onEndReached={this._getNewList(index)}
       />;
   }
   _renderRowItem = (rowData, sectionID, rowID)=>{
-    let { companyList=[] } = this.props;
-    let company = companyList[rowID];
+    let { companyList } = this.props;
+    let company = companyList && companyList.list && companyList.list[rowID];
     return <List.Item
       multipleLine
       key={company.id}

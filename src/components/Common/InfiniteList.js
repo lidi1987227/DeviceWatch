@@ -58,6 +58,7 @@ export default class InfiniteList extends React.Component {
       list,         //列表数据
       onEndReached, //滚动到底部触发
       className,    //
+      hasNoMore,    //
     } = this.props;
 
     return (
@@ -66,15 +67,15 @@ export default class InfiniteList extends React.Component {
         dataSource={this.state.dataSource}
         renderHeader={renderHeader?renderHeader:null}
         renderFooter={renderFooter?renderFooter:() => (<div style={{ padding: 15, textAlign: 'center' }}>
-          {'Loading...'}
+          { hasNoMore? '没有更多了。':'加载中...' }
         </div>)}
         renderRow={renderRow}
         className={"infinite-list " + className}
         pageSize={pageSize}
         useBodyScroll
         onScroll={() => { /*console.log('scroll');*/ }}
-        scrollRenderAheadDistance={500}
-        onEndReached={onEndReached}
+        scrollRenderAheadDistance={200}
+        onEndReached={!hasNoMore?onEndReached:()=>{}}
         onEndReachedThreshold={10}
       />
     );
