@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavBar, Icon, WhiteSpace, Tabs, SearchBar, List, Brief } from 'antd-mobile';
+import { NavBar, Icon, WhiteSpace, Tabs } from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import BasicDetail from "./BasicDetail";
 import CredentialDetail from "./CredentialDetail";
@@ -17,10 +17,6 @@ export default class CompanyManage extends React.Component {
   render() {
     let { companyDetail } = this.props;
     let { deviceList } = companyDetail;
-    console.warn("companyDetail",companyDetail);
-    const data1 = Array.from(new Array(6)).map(() => ({
-      icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
-    }));
     return <div>
       <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>企业详情</NavBar>
 

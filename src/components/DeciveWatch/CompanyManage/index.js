@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavBar, Icon, WhiteSpace, Tabs, SearchBar,List,Brief } from 'antd-mobile';
+import { NavBar, Icon, WhiteSpace, Tabs, SearchBar,List } from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { getAllCompanyList,getCompanyDetail } from "../../../sdk";
 import InfiniteList from "../../Common/InfiniteList";

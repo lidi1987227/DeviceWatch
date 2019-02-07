@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, Icon, WhiteSpace, Tabs, SearchBar, List } from 'antd-mobile';
+import { List } from 'antd-mobile';
 import {companyEquipmentDetail} from "../../../logic/company";
 let { Item } = List;
 let { Brief } = Item;
@@ -21,7 +21,7 @@ export default class EquipmentDetail extends Component {
       multipleLine
       key={index}
       thumb="https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png">
-      {companyEquipmentDetail.map((item,index)=>{
+      {companyEquipmentDetail.map((item)=>{
         return <Brief key={`${item.serKey}`} className="equipment-device-item">
           <div className="device-left">{item.name}</div>
           <div className="device-right">{device[item.serKey]}</div>

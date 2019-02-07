@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, Icon, WhiteSpace, Tabs, SearchBar, List, Brief } from 'antd-mobile';
+import { List } from 'antd-mobile';
 import {companyCredentialDetail} from "../../../logic/company";
 let { Item } = List;
 export default class CredentialDetail extends Component {

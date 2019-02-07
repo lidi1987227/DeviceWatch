@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { NavBar, Icon, WhiteSpace, Tabs, SearchBar, List, Brief } from 'antd-mobile';
+import { List } from 'antd-mobile';
 import { deviceRegInfo } from "../../../logic/device";
-let { Item } = List;
-let TOP_ITEM_NUM = 2;
+
+const { Item } = List;
+const TOP_ITEM_NUM = 2;
 export default class BasicDetail extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     let { deviceInfo } = this.props;
     return <List className="device-reg-list">

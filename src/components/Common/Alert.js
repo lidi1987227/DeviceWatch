@@ -20,6 +20,5 @@ export const Alert = (message, title="提示") => {
       }
     }
   }
-  console.warn("alert args message,title,btnTxt,clickCallBack",message,title,btnTxt,clickCallBack);
   return Modal.alert(title, message,[{text:btnTxt?btnTxt:"确定",onPress:clickCallBack}])
 };
