@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavBar, Icon, WhiteSpace, Tabs, SearchBar,List } from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
-import { getAllDevice ,getDeviceDetail } from "../../../sdk";
+import { getAllDevice ,getDeviceDetail,getDeviceCheckList } from "../../../sdk";
 import InfiniteList from "../../Common/InfiniteList";
 import {companyEquipmentDetail} from "../../../logic/company/constants";
 
@@ -103,6 +103,7 @@ export default class CompanyManage extends React.Component {
   }
   _openDeviceDetail = (id) => {
     getDeviceDetail(id).then(()=>{
+      
       window.goRoute(window.routeMap.deviceDetail);
     });
   }

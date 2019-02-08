@@ -4,6 +4,7 @@ import * as checkManage from './checkManage';
 
 export const getAllDevice = deviceManage.getAllDevice;
 export const getDeviceDetail = deviceManage.getDeviceDetail;
+export const getDeviceCheckList = deviceManage.getDeviceCheckList;
 
 export const getAllCompanyList = companyManage.getAllCompanyList;
 export const getCompanyDetail = companyManage.getCompanyDetail;

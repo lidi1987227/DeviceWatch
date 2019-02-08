@@ -2,6 +2,7 @@ import React from 'react';
 import { NavBar, Icon, WhiteSpace, Tabs, } from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import RegisterInfo from "./RegisterInfo";
+import DeviceTestInfo from "./DeviceTestInfo";
 export default class DeviceDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -12,9 +13,8 @@ export default class DeviceDetail extends React.Component {
     ];
   }
   render() {
-    let { deviceDetail } = this.props;
-    let { deviceInfo } = deviceDetail;
-
+    let { deviceDetail,deviceCheckList } = this.props;
+    console.warn("device detail ",deviceDetail,"deviceCheckList is ",deviceCheckList);
     return <div>
       <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>设备详情</NavBar>
       <WhiteSpace />
@@ -23,13 +23,11 @@ export default class DeviceDetail extends React.Component {
           initalPage={'t2'}
           renderTabBar={this._renderTabBar}
         >
-          <RegisterInfo deviceInfo={deviceInfo} />
+          <RegisterInfo deviceDetail={deviceDetail} />
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
             暂时不做！
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
-            没找到接口
-          </div>
+          <DeviceTestInfo deviceCheckList={deviceCheckList} />
         </Tabs>
       </StickyContainer>
       <WhiteSpace />

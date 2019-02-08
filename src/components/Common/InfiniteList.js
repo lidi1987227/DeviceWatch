@@ -74,7 +74,7 @@ export default class InfiniteList extends React.Component {
         pageSize={pageSize}
         useBodyScroll
         onScroll={() => { /*console.log('scroll');*/ }}
-        scrollRenderAheadDistance={200}
+        scrollRenderAheadDistance={100}
         onEndReached={!hasNoMore?onEndReached:()=>{}}
         onEndReachedThreshold={10}
       />
