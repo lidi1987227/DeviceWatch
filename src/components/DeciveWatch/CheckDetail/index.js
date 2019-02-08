@@ -1,50 +1,55 @@
 import React from 'react';
-import { NavBar, Icon, WhiteSpace, Tabs, SearchBar,List,Brief } from 'antd-mobile';
-import { StickyContainer, Sticky } from 'react-sticky';
+import { NavBar, Icon, WhiteSpace, List, SegmentedControl } from 'antd-mobile';
 
+let { Item } = List;
+let { Brief } = Item;
 export default class CheckDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.munuList = [
-      { title: 'First Tab' },
-      { title: 'Second Tab' },
-      { title: 'Third Tab' },
-    ];
   }
   render() {
     let { checkDetail } = this.props;
-    const data1 = Array.from(new Array(6)).map(() => ({
-      icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
-    }));
-    console.warn("checkDetail",checkDetail);
+    let { checkDetailList } = checkDetail;
+    console.warn("checkDetail", checkDetail);
     return <div>
       <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>任务详情</NavBar>
-
       <WhiteSpace />
-      <StickyContainer>
-        <Tabs tabs={this.munuList}
-          initalPage={'t2'}
-          renderTabBar={this._renderTabBar}
-        >
-          <List renderHeader={() => ''} className="my-list">
-            <List.Item multipleLine extra="extra content" onClick={()=>window.goRoute(window.routeMap.supervisoryReview)}>
-              Title <List.Item.Brief>subtitle</List.Item.Brief>
-            </List.Item>
-          </List>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
-            Content of second tab
-        </div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
-            Content of third tab
-        </div>
-        </Tabs>
-      </StickyContainer>
+      <List className="check-detail-list">
+        <Item className="check-detail-date" extra={`${checkDetail.startDate} 至 ${checkDetail.endDate}`}>
+          检查日期：
+        </Item>
+        <Item multipleLine wrap>
+          检查内容描述： <Brief>{checkDetail.content}</Brief>
+        </Item>
+        <Item multipleLine wrap>
+          检查设备类型： <Brief>subtitle</Brief>
+        </Item>
+        <Item multipleLine className="check-detail-item">
+          受检单位：
+          <SegmentedControl
+            values={['全部', '已检查', '未检查']}
+            className="check-detail-segment"
+            onChange={this._onChange}
+            onValueChange={this._onValueChange}
+          />
+        </Item>
+        <WhiteSpace size="sm" style={{ backgroundColor: "#f5f5f9" }} />
+        {checkDetailList.map((checkItem,index) => {
+          let {deviceCompany} = checkItem;
+          return <Item key={`${checkItem.id}-${index}`} multipleLine extra={checkItem.checkStatus} onClick={() => window.goRoute(window.routeMap.supervisoryReview)}>
+            <Brief>{deviceCompany.name}</Brief>
+            <Brief>{deviceCompany.companyTypeDesc}</Brief>
+            <Brief>{deviceCompany.detailAddress}</Brief>
+          </Item>
+        })}
+      </List>
       <WhiteSpace />
     </div>
   }
-  _renderTabBar = (props) => {
-    return (<Sticky>
-      {({ style }) => <div style={{ ...style, zIndex: 1 }}><Tabs.DefaultTabBar {...props} /></div>}
-    </Sticky>);
+  _onChange = (e) => {
+    console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
+  }
+  _onValueChange = (value) => {
+    console.log(value);
   }
 }

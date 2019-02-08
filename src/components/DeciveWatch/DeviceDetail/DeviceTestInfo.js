@@ -17,11 +17,9 @@ export default class DeviceTestInfo extends Component {
   }
 
   _renderDevice = (checkItem, index) => {
-    return <div>
-      <WhiteSpace size="sm" />
-      <Item
-        multipleLine
-        key={index}>
+    return <div key={index}>
+      <WhiteSpace size="sm" style={{backgroundColor:"#f5f5f9"}}/>
+      <Item multipleLine >
         {deviceTestInfo.map((item) => {
           return <Brief key={`${item.serKey}`} className="device-checkItem-item">
             <div className="checkItem-left">{item.name}</div>
