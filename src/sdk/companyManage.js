@@ -6,7 +6,7 @@ import { setCompanyList,setCompanyMore,setCompanyDetail } from '../ducks/company
  * @returns {Promise} ajax promise result
  */
 export const getAllCompanyList = (conditions={},isMore=false) => {
-  let { name = "", contact = "", companyType = 0, page = 1, size = 20 } = conditions;
+  let { name = "", contact = "", companyType = 0, page = 1, size = 10 } = conditions;
   let url = "/api/device/company/list?" + "page=" + page + "&size=" + size;
   name !== "" ? url += `&name=${name}` : null;
   contact !== "" ? url += `&contact=${contact}` : null;

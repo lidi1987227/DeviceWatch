@@ -1,7 +1,7 @@
 /* eslint no-dupe-keys: 0 */
 import React from "react";
 
-import { ListView } from 'antd-mobile';
+import { ListView,PullToRefresh } from 'antd-mobile';
 
 function genData(list) {
   const dataBlob = {};
@@ -20,6 +20,7 @@ export default class InfiniteList extends React.Component {
 
     this.state = {
       dataSource,
+      refreshing:true,
       isLoading: true,
     };
   }
@@ -35,6 +36,7 @@ export default class InfiniteList extends React.Component {
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(this.rData),
         isLoading: false,
+        refreshing:false,
       });
     }, 600);
   }
@@ -57,6 +59,7 @@ export default class InfiniteList extends React.Component {
       pageSize=20,  //列表分页大小
       list,         //列表数据
       onEndReached, //滚动到底部触发
+      onRefresh,    //下拉刷新方法
       className,    //
       hasNoMore,    //
     } = this.props;
@@ -71,6 +74,10 @@ export default class InfiniteList extends React.Component {
         </div>)}
         renderRow={renderRow}
         className={"infinite-list " + className}
+        pullToRefresh={<PullToRefresh
+          refreshing={this.state.refreshing}
+          onRefresh={this._onRefresh}
+        />}
         pageSize={pageSize}
         useBodyScroll
         onScroll={() => { /*console.log('scroll');*/ }}
@@ -79,5 +86,19 @@ export default class InfiniteList extends React.Component {
         onEndReachedThreshold={10}
       />
     );
+  }
+  _onRefresh = ()=> {
+    let { onRefresh } = this.props;
+    this.setState({
+      isLoading:true,
+      refreshing:true,
+    });
+    setTimeout(() => {
+      onRefresh && onRefresh();
+      this.setState({
+        isLoading:false,
+        refreshing:false,
+      });
+    }, 600);
   }
 }

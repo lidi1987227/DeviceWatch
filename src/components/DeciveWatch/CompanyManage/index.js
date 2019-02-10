@@ -64,7 +64,7 @@ export default class CompanyManage extends React.Component {
         className="company-list"
         list={compList}
         renderRow={this._renderRowItem}
-        pageSize={20}
+        pageSize={10}
         hasNoMore = {this.munuList[index].pageIndex >= maxPage}
         onEndReached={this._getNewList(index)}
       />;

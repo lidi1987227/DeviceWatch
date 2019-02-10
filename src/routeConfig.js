@@ -7,6 +7,7 @@ import DeviceDetail from './containers/DeciveWatch/DeviceDetail';
 import CheckManage from './containers/DeciveWatch/CheckManage';
 import CheckDetail from './containers/DeciveWatch/CheckDetail';
 import SupervisoryReview from './containers/DeciveWatch/SupervisoryReview';
+import SupervisoryDetail from "./components/DeciveWatch/SupervisoryDetail/ProduceCheckList";
 
 
 export const routeMap = {
@@ -31,6 +32,7 @@ const routeConfig = {
   [routeMap.checkManage]:CheckManage,//任务管理
   [routeMap.checkDetail]:CheckDetail,//任务详情
   [routeMap.supervisoryReview]:SupervisoryReview,//监督检查
+  [routeMap.example]:SupervisoryDetail,//example
 };
 
 export default routeConfig;
