@@ -22,6 +22,7 @@
     "ajax": true,
     "ajaxGet": false,
     "$getState": false,
+    "routeMap": false,
     "$dispatch": false
 },
   "plugins":[

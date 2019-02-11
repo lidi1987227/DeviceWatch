@@ -28,7 +28,7 @@ export default class SupervisoryManage extends React.Component {
   render() {
     return <div>
       <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>监督检查</NavBar>
-      <SearchBar placeholder="请输入企业名称、联系人名称、关键词" maxLength={100} />
+      <SearchBar placeholder="请输入企业名称、联系人名称" maxLength={100} />
       <WhiteSpace />
       <StickyContainer>
         <Tabs tabs={this.munuList}

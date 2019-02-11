@@ -27,10 +27,6 @@ const postcssOpts = {
 
 module.exports = {
   devtool: 'source-map', // or 'inline-source-map'
-  devServer: {
-    disableHostCheck: true
-  },
-
   entry: { "index": path.resolve(__dirname, 'src/index') },
 
   output: {
@@ -100,7 +96,9 @@ module.exports = {
     contentBase: './', //本地服务器所加载的页面所在的目录
     historyApiFallback: true, //不跳转
     inline:true,
+    disableHostCheck: true,
     host:'127.0.0.1',
+    // host:'192.168.0.100',
 		port: 8080, //设置默认监听端口，如果省略，默认为”8080“
     proxy: {
         '/api': {

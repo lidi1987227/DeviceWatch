@@ -2,6 +2,7 @@ import React from 'react';
 import { NavBar, Icon, WhiteSpace, List, Tag, Checkbox, WingBlank, Button } from 'antd-mobile';
 
 let { CheckboxItem } = Checkbox;
+
 export default class DeviceDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -24,24 +25,17 @@ export default class DeviceDetail extends React.Component {
 
   render() {
     let { test } = this.props;
-    const tagElement = (<Tag closable onChange={() => { this._isSelectAll(!this.state.isSelectAll) }}>
+    const tagElement = (<Tag onChange={() => { this._isSelectAll(!this.state.isSelectAll) }}>
       {!this.state.isSelectAll ? "全选" : "取消全选"}
     </Tag>);
-    return <div className="produce-check-list">
-      <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>生产单位现场安全监督检查项目表</NavBar>
+
+    return <div className="use-check-list">
+      <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>使用单位现场安全监督检查</NavBar>
       <WhiteSpace />
-      <div className="produce-content">
+      <div className="use-content">
         <div className="content-top">
-          <List.Item extra={tagElement}>检查内容</List.Item>
-          {this.state.checkList.map((chekcItem, index) => {
-            return <CheckboxItem
-              key={chekcItem.value}
-              wrap
-              checked={chekcItem.isSelected}
-              onClick={() => this._onChange(chekcItem.value, index)}>
-              {chekcItem.label}
-            </CheckboxItem>
-          })}
+          <List.Item extra={tagElement}>检查类别</List.Item>
+
         </div>
         <div className="content-bottom">
           <WingBlank >

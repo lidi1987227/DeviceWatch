@@ -6,13 +6,14 @@ import { setSupervisoryList,setSupervisoryDetail,setSupervisoryMore } from '../d
  * @returns {Promise} ajax promise result
  */
 export const getSupervisoryList = (conditions={},isMore=false) => {
-  let { page = 1, size = 10 } = conditions;
-  let url = "/api/check/detail/list?" + "page=" + page + "&size=" + size;
+  let { page = 1, size = 10, companyTypeId=0 } = conditions;
+  let url = "/api/check/detail/listForApp?" + "page=" + page + "&size=" + size;
+  companyTypeId !== "" && companyTypeId !== 0 ? url += `&companyTypeId=${companyTypeId}` : null;
   console.log("getSupervisoryList current page is ",page);
   try {
     return ajaxGet(url).then((data) => {
-      isMore?setSupervisoryMore(data,0):
-      setSupervisoryList(data,0);
+      isMore?setSupervisoryMore(data,companyTypeId):
+      setSupervisoryList(data,companyTypeId);
     });
   } catch (error) {
     console.log("getSupervisoryList error",error);

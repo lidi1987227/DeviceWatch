@@ -21,17 +21,17 @@ export default class SupervisoryDetail extends React.Component {
         { label: <div key="2017">2017text</div>, value: '2017', },
       ];
     this.produceList = [
-      { title: '生产单位', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: "" },
+      { title: '生产单位', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: routeMap.produceCheckList },
     ];
     this.useList = [
-      { title: '锅炉', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: "" },
-      { title: '压力容器', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: "" },
-      { title: '压力管道', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: "" },
-      { title: '电梯', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: "" },
-      { title: '起重机械', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: "" },
-      { title: '客运索道', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: "" },
-      { title: '大型游乐设施', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: "" },
-      { title: '场(厂)内专用机动车辆', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: "" },
+      { title: '锅炉', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: routeMap.useCheckList },
+      { title: '压力容器', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: routeMap.useCheckList },
+      { title: '压力管道', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: routeMap.useCheckList },
+      { title: '电梯', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: routeMap.useCheckList },
+      { title: '起重机械', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: routeMap.useCheckList },
+      { title: '客运索道', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: routeMap.useCheckList },
+      { title: '大型游乐设施', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: routeMap.useCheckList },
+      { title: '场(厂)内专用机动车辆', icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png', route: routeMap.useCheckList },
     ];
     this.state = {
       colorValue: ['#00FF00'],
