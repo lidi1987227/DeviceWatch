@@ -98,7 +98,7 @@ module.exports = {
     inline:true,
     disableHostCheck: true,
     host:'127.0.0.1',
-    // host:'192.168.0.100',
+    // host:'192.168.0.105',
 		port: 8080, //设置默认监听端口，如果省略，默认为”8080“
     proxy: {
         '/api': {

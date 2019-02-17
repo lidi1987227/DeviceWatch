@@ -10,6 +10,7 @@ import SupervisoryReview from './containers/DeciveWatch/SupervisoryReview';
 import SupervisoryDetail from "./components/DeciveWatch/SupervisoryDetail";
 import ProduceCheckList from "./components/DeciveWatch/SupervisoryDetail/ProduceCheckList";
 import UseCheckList from "./components/DeciveWatch/SupervisoryDetail/UseCheckList";
+import Example from "./components/DeciveWatch/SupervisoryDetail/PrintPreView";
 
 
 export const routeMap = {
@@ -40,7 +41,7 @@ const routeConfig = {
   [routeMap.supervisoryDetail]:SupervisoryDetail,//监督详情
   [routeMap.produceCheckList]:ProduceCheckList,//监督详情生产单位检查列表
   [routeMap.useCheckList]:UseCheckList,//监督详情使用单位检查列表
-  [routeMap.example]:SupervisoryDetail,//example调试页
+  [routeMap.example]:Example,//example调试页
 };
 
 export default routeConfig;
