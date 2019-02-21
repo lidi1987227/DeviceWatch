@@ -1,42 +1,44 @@
 import React from 'react';
-import { NavBar, Icon, WingBlank, Carousel, Grid } from 'antd-mobile';
+import { NavBar, Icon, Carousel, Grid } from 'antd-mobile';
 
 export default class MainPage extends React.Component {
   constructor(props){
     super(props);
     this.munuList=[
-      {title:'统计分析',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:window.routeMap.statisticlAnalysis},
-      {title:'企业管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:window.routeMap.companyManage},
-      {title:'设备管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:window.routeMap.deviceManage},
-      {title:'任务管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:window.routeMap.checkManage},
-      {title:'监督检查',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:window.routeMap.supervisoryReview},
-      {title:'隐患管理',icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',route:'companyManage'}
+      {title:'统计分析',icon: '../resource/icon/统计分析.png',route:window.routeMap.statisticlAnalysis},
+      {title:'企业管理',icon: '../resource/icon/企业查询.png',route:window.routeMap.companyManage},
+      {title:'设备管理',icon: '../resource/icon/设备管理.png',route:window.routeMap.deviceManage},
+      {title:'任务管理',icon: '../resource/icon/任务管理.png',route:window.routeMap.checkManage},
+      {title:'监督检查',icon: '../resource/icon/检查计划.png',route:window.routeMap.supervisoryReview},
+      {title:'隐患管理',icon: '../resource/icon/隐患管理.png',route:'companyManage'}
+    ];
+    this.banner = [
+      "../resource/img/blue.jpg",
+      "../resource/img/blue.jpg",
     ];
   }
   render() {
     let { test } = this.props;
-    const data1 = Array.from(new Array(6)).map(() => ({
-      icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
-    }));
     return <div className="main-page">
       <NavBar mode="light" className="main-top" icon={<Icon type="left" />} onLeftClick={() => console.log('onLeftClick')}>智慧市场监管</NavBar>
-      <WingBlank className="main-middle">
+      <div className="main-middle">
         <Carousel className="my-carousel"
-                  vertical
                   dots={false}
                   dragging={false}
                   swiping={false}
                   autoplay
                   infinite
-                  speed={5000}
-                  autoplayInterval={1000}
+                  speed={1000}
+                  autoplayInterval={3000}
                   resetAutoplay={false}
         >
-          {['ring', 'ruby', 'iPhone', 'iPod', 'sorry', 'tourism', 'coke', 'ticket', 'note'].map(type => (
-            <div className="v-item" key={type}>{type}</div>
+          {this.banner.map((banner,index) => (
+            <div className="banner-container" key={index}>
+              <img src={banner} alt={index} className="banner-img"/>
+            </div>
           ))}
         </Carousel>
-      </WingBlank>
+      </div>
       <Grid data={this.munuList}
         className="main-bottom"
             columnNum={3}
