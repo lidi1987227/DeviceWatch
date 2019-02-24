@@ -1,4 +1,3 @@
-/* eslint no-dupe-keys: 0 */
 import React from "react";
 
 import { ListView,PullToRefresh } from 'antd-mobile';
@@ -26,7 +25,7 @@ export default class InfiniteList extends React.Component {
   }
 
   componentDidMount() {
-    // you can scroll to the specified position
+    // 可以通过以下方法指定列表滚动到指定位置
     // setTimeout(() => this.lv.scrollTo(0, 120), 800);
 
     // simulate initial Ajax
@@ -41,7 +40,6 @@ export default class InfiniteList extends React.Component {
     }, 600);
   }
 
-  // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
   componentWillReceiveProps(nextProps) {
     if (nextProps.list !== this.props.list) {
       let newData = genData(nextProps.list);
@@ -60,8 +58,8 @@ export default class InfiniteList extends React.Component {
       list,         //列表数据
       onEndReached, //滚动到底部触发
       onRefresh,    //下拉刷新方法
-      className,    //
-      hasNoMore,    //
+      className,    //自定义样式名
+      hasNoMore,    //没有更多数据标记位
     } = this.props;
 
     return (
