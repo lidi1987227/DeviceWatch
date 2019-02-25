@@ -1,14 +1,16 @@
 import React from 'react';
-import { NavBar, Icon, WhiteSpace, Tabs } from 'antd-mobile';
+import {NavBar, Icon, WhiteSpace, Tabs, SearchBar} from 'antd-mobile';
 import { StickyContainer, Sticky} from 'react-sticky';
+import DailyCheckCharts from "./DailyCheckCharts";
 
 export default class StatisticlAnalysis extends React.Component {
   constructor(props){
     super(props);
     this.munuList=[
-      { title: 'First Tab' },
-  { title: 'Second Tab' },
-  { title: 'Third Tab' },
+      { title: '日常监督' },
+  { title: '隐患分析' },
+  { title: '单位分布' },
+      { title: '设备分布' },
     ];
   }
   render() {
@@ -18,7 +20,7 @@ export default class StatisticlAnalysis extends React.Component {
     }));
     return <div>
       <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>统计分析</NavBar>
-      <div><span>条件查询</span><input/></div>
+      <SearchBar placeholder="请输入" maxLength={100} />
       <WhiteSpace />
     <StickyContainer>
       <Tabs tabs={this.munuList}
@@ -26,13 +28,16 @@ export default class StatisticlAnalysis extends React.Component {
         renderTabBar={this._renderTabBar}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
-          Content of first tab
+          <DailyCheckCharts />
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
-          Content of second tab
+          隐患分析
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
-          Content of third tab
+          单位分布
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
+          设备分布
         </div>
       </Tabs>
     </StickyContainer>

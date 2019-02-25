@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "ant-design-mobile-chart": "^0.1.9",
     "antd-mobile": "^2.0.0",
     "rc-form": "^0.17.2",
     "react": "^15.6.1",
