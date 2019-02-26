@@ -2,6 +2,10 @@ import * as deviceManage from './deviceManage';
 import * as companyManage from './companyManage';
 import * as checkManage from './checkManage';
 import * as supervisoryReview from './supervisoryReview';
+import * as common from './common';
+
+export const getCodeTable = common.getCodeTable;
+export const getSysUserList = common.getSysUserList;
 
 export const getAllDevice = deviceManage.getAllDevice;
 export const getDeviceDetail = deviceManage.getDeviceDetail;

@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import MainPage from '../../components/DeciveWatch/MainPage'
 
 const mapStateToProps = (state) => ({
-  test: state.deviceWatch.test
+  codeTable: state.common.codeTable
 });
 
 const mapDispatchToProps = (state) => ({});

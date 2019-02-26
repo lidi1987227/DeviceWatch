@@ -7,7 +7,7 @@ import DeviceDetail from './containers/DeciveWatch/DeviceDetail';
 import CheckManage from './containers/DeciveWatch/CheckManage';
 import CheckDetail from './containers/DeciveWatch/CheckDetail';
 import SupervisoryReview from './containers/DeciveWatch/SupervisoryReview';
-import SupervisoryDetail from "./components/DeciveWatch/SupervisoryDetail";
+import SupervisoryDetail from "./containers/DeciveWatch/SupervisoryDetail";
 import ProduceCheckList from "./components/DeciveWatch/SupervisoryDetail/ProduceCheckList";
 import UseCheckList from "./components/DeciveWatch/SupervisoryDetail/UseCheckList";
 import Example from "./components/DeciveWatch/SupervisoryDetail/PrintPreView";

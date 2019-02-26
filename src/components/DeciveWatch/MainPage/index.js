@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavBar, Icon, Carousel, Grid } from 'antd-mobile';
+import { getCodeTable} from "../../../sdk";
 
 export default class MainPage extends React.Component {
   constructor(props){
@@ -17,6 +18,11 @@ export default class MainPage extends React.Component {
       "../resource/img/blue.jpg",
     ];
   }
+
+  componentWillMount(){
+    getCodeTable();
+  }
+
   render() {
     let { test } = this.props;
     return <div className="main-page">

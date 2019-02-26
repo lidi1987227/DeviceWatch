@@ -3,6 +3,7 @@ import SupervisoryReview from '../../components/DeciveWatch/SupervisoryReview'
 
 const mapStateToProps = (state) => {
   let props = {
+    codeTable: state.common.codeTable
   };
   Object.keys(state.supervisory).forEach((item)=>{
     if (item.indexOf("supervisoryList") !== -1) {
