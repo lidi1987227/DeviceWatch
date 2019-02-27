@@ -8,8 +8,8 @@ import CheckManage from './containers/DeciveWatch/CheckManage';
 import CheckDetail from './containers/DeciveWatch/CheckDetail';
 import SupervisoryReview from './containers/DeciveWatch/SupervisoryReview';
 import SupervisoryDetail from "./containers/DeciveWatch/SupervisoryDetail";
-import ProduceCheckList from "./components/DeciveWatch/SupervisoryDetail/ProduceCheckList";
-import UseCheckList from "./components/DeciveWatch/SupervisoryDetail/UseCheckList";
+import ProduceCheckList from "./containers/DeciveWatch/ProduceCheckList";
+import UseCheckList from "./containers/DeciveWatch/UseCheckList";
 import Example from "./components/DeciveWatch/SupervisoryDetail/PrintPreView";
 
 

@@ -8,7 +8,7 @@ import {
   List,
   Grid
 } from "antd-mobile";
-import { getSysUserList } from "../../../sdk";
+import { getSysUserList, getUsedCheckItemList } from "../../../sdk";
 
 const isIPhone = new RegExp("\\biPhone\\b|\\biPod\\b", "i").test(
   window.navigator.userAgent
@@ -25,6 +25,7 @@ export default class SupervisoryDetail extends React.Component {
     super(props);
     this.produceList = [
       {
+        type: 'produce',
         title: "生产单位",
         icon:
           "https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png",
@@ -48,6 +49,7 @@ export default class SupervisoryDetail extends React.Component {
       [];
     const tempDeviceTypeList = (codeTable && codeTable["设备类型"]) || [];
     const useDeviceTypeList = tempDeviceTypeList.map(item => ({
+      type: 'used',
       title: item.code,
       id: item.id,
       icon:
@@ -120,7 +122,7 @@ export default class SupervisoryDetail extends React.Component {
   }
   _renderMenuItem = dataItem => {
     return (
-      <div onClick={() => window.goRoute(dataItem.route)}>
+      <div onClick={() => {this.handleMenuItemClick(dataItem)}}>
         <img
           src={dataItem.icon}
           style={{ width: "50px", height: "50px" }}
@@ -132,4 +134,11 @@ export default class SupervisoryDetail extends React.Component {
       </div>
     );
   };
+  handleMenuItemClick = dataItem => {
+    if(dataItem.type === 'used' && dataItem.id){
+      getUsedCheckItemList(dataItem.id);
+    }
+    window.goRoute(dataItem.route)
+  }
+
 }

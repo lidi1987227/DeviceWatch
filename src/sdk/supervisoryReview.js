@@ -1,4 +1,4 @@
-import { setSupervisoryList,setSupervisoryDetail,setSupervisoryMore } from '../ducks/supervisory';
+import { setSupervisoryList,setSupervisoryDetail,setSupervisoryMore, setProduceCheckItemList, setUsedCheckItemList } from '../ducks/supervisory';
 /**
  * 获取所有监督检查列表
  * @param {object} conditions 参数对象 { page = 0, size = 0 }；
@@ -33,5 +33,37 @@ export const getSupervisoryDetail = async (id) => {
     });
   } catch (error) {
     console.log("getSupervisoryDetail error",error);
+  }
+};
+
+/**
+ * 
+ * @param 无
+ * @returns {null} null
+ */
+export const getProduceCheckItemList = async () => {
+  let url = "/api/check/items/produce/getItemList";
+  try {
+    await ajaxGet(url).then((data) => {
+      setProduceCheckItemList(data)
+    });
+  } catch (error) {
+    console.log("getProduceCheckItemList error",error);
+  }
+};
+
+/**
+ * 
+ * @param 无
+ * @returns {null} null
+ */
+export const getUsedCheckItemList = async id => {
+  let url = `/api/check/items/used/getItemList/${id}`;
+  try {
+    await ajaxGet(url).then((data) => {
+      setUsedCheckItemList(data)
+    });
+  } catch (error) {
+    console.log("getUsedCheckItemList error",error);
   }
 };

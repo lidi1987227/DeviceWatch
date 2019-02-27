@@ -93,8 +93,7 @@ export default class SupervisoryManage extends React.Component {
         onClick={() => this._openSupervisoryDetail(supervisory.id)}
       >
         {supervisory.companyName}
-        <List.Item.Brief>{`${supervisory.devices}`}</List.Item.Brief>
-        <List.Item.Brief>{`${supervisory.companyContact}`}</List.Item.Brief>
+        <List.Item.Brief>{`${supervisory.companyContact}  ${supervisory.companyContactNo}`}</List.Item.Brief>
         <List.Item.Brief>{`${supervisory.companyAddress}`}</List.Item.Brief>
       </List.Item>
     );

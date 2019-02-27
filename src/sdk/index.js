@@ -19,3 +19,5 @@ export const getCheckDetail = checkManage.getCheckDetail;
 
 export const getSupervisoryList = supervisoryReview.getSupervisoryList;
 export const getSupervisoryDetail = supervisoryReview.getSupervisoryDetail;
+export const getProduceCheckItemList = supervisoryReview.getProduceCheckItemList;
+export const getUsedCheckItemList = supervisoryReview.getUsedCheckItemList;

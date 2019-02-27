@@ -2,10 +2,14 @@
 const SET_SUPERVISORY_LIST = 'supervisory/setSupervisoryList';
 const SET_SUPERVISORY_DETAIL = 'supervisory/setSupervisoryDetail';
 const SET_MORE_SUPERVISORY_LIST = 'supervisory/setSupervisoryMore';
+const SET_PRODUCE_CHECK_ITEM_LIST = 'supervisory/setProduceCheckItemList';
+const SET_USED_CHECK_ITEM_LIST = 'supervisory/setUsedCheckItemList';
 
 const initState = {
   supervisoryList: {},
   supervisoryDetail:{},
+  produceCheckItems: [],
+  usedCheckItems: []
 };
 
 export default function reducer(state = initState, action) {
@@ -23,6 +27,10 @@ export default function reducer(state = initState, action) {
       return Object.assign({}, state, newState);
     case SET_SUPERVISORY_DETAIL:
       return Object.assign({}, state, { supervisoryDetail: action.supervisoryDetail });
+    case SET_PRODUCE_CHECK_ITEM_LIST:
+      return Object.assign({}, state, { produceCheckItems: action.data || [] });
+    case SET_USED_CHECK_ITEM_LIST:
+    return Object.assign({}, state, { usedCheckItems: action.data || [] });
     default:
       return state;
 
@@ -32,3 +40,5 @@ export default function reducer(state = initState, action) {
 export const setSupervisoryList = (list,supervisoryType) => window.$dispatch({ type: SET_SUPERVISORY_LIST, list, supervisoryType });
 export const setSupervisoryMore = (list,supervisoryType) => window.$dispatch({ type: SET_MORE_SUPERVISORY_LIST, list, supervisoryType });
 export const setSupervisoryDetail = (supervisoryDetail) => window.$dispatch({ type: SET_SUPERVISORY_DETAIL, supervisoryDetail });
+export const setProduceCheckItemList = (data) => window.$dispatch({ type: SET_PRODUCE_CHECK_ITEM_LIST, data });
+export const setUsedCheckItemList = (data) => window.$dispatch({ type: SET_USED_CHECK_ITEM_LIST, data });

@@ -38,9 +38,6 @@ export default class CheckDetail extends React.Component {
           <Item multipleLine wrap>
             检查内容描述： <Brief>{checkDetail.content}</Brief>
           </Item>
-          <Item multipleLine wrap>
-            检查设备类型： <Brief>subtitle</Brief>
-          </Item>
           <Item multipleLine className="check-detail-item">
             受检单位：
             <SegmentedControl

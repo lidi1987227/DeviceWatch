@@ -1,20 +1,17 @@
 import React from 'react';
-import { NavBar, Icon, WhiteSpace, List, Tag, Checkbox, WingBlank, Button } from 'antd-mobile';
+import { NavBar, Icon, WhiteSpace, List, Checkbox, WingBlank, Button,SearchBar } from 'antd-mobile';
 
 let { CheckboxItem } = Checkbox;
+let { Brief } = List.Item;
 export default class DeviceDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isSelectAll: false,
       checkList: [
-        { label: "1.检查许可证是否在有效期内", value: "test1", isSelected: false },
-        { label: "2.抽检特种设备管理人员，检测人员，专业技术人员，作业人员是否具有相应资格", value: "test2", isSelected: false },
-        { label: "3.抽查设计制造，安装，改造，重大修理档案是否建立", value: "test3", isSelected: false },
-        { label: "4.抽查设计图样审批手续是否符合要求", value: "test4", isSelected: false },
-        { label: "5.抽检特种设备管理人员，检测人员，专业技术人员，作业人员是否具有相应资格", value: "test5", isSelected: false },
-        { label: "6.抽检特种设备管理人员，检测人员，专业技术人员，作业人员是否具有相应资格", value: "test6", isSelected: false },
-        { label: "7.抽检特种设备管理人员，检测人员，专业技术人员，作业人员是否具有相应资格", value: "test7", isSelected: false },
+        { label: "设备一", value: "test1", isSelected: false },
+        { label: "设备二", value: "test2", isSelected: false },
+        { label: "设备三", value: "test3", isSelected: false },
       ],
     }
   }
@@ -24,22 +21,27 @@ export default class DeviceDetail extends React.Component {
 
   render() {
     let { test } = this.props;
-    const tagElement = (<Tag closable onChange={() => { this._isSelectAll(!this.state.isSelectAll) }}>
-      {!this.state.isSelectAll ? "全选" : "取消全选"}
-    </Tag>);
-    return <div className="produce-check-list">
-      <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>生产单位现场安全监督检查项目表</NavBar>
+
+    return <div className="device-check-page">
+      <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={() => history.back()}>设备选择</NavBar>
+      <SearchBar placeholder="请输入设备名称／使用登记代码" maxLength={100} />
       <WhiteSpace />
       <div className="produce-content">
         <div className="content-top">
-          <List.Item extra={tagElement}>检查内容</List.Item>
           {this.state.checkList.map((chekcItem, index) => {
             return <CheckboxItem
               key={chekcItem.value}
-              wrap
+              className="device-check"
               checked={chekcItem.isSelected}
               onClick={() => this._onChange(chekcItem.value, index)}>
-              {chekcItem.label}
+              <Brief>
+                <div className="device-check-name">设备名称</div>
+                <div className="device-check-value">{chekcItem.label}</div>
+              </Brief>
+              <Brief>
+                <div className="device-check-name">使用登记代码</div>
+                <div className="device-check-value">{chekcItem.label}</div>
+              </Brief>
             </CheckboxItem>
           })}
         </div>
