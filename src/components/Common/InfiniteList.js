@@ -5,7 +5,7 @@ import { ListView,PullToRefresh } from 'antd-mobile';
 function genData(list) {
   const dataBlob = {};
   for (let i = 0; i < list.length; i++) {
-    dataBlob[`${i}`] = `row-${i}`;
+    dataBlob[`${i}`] = `row-${list[i].id}-${i}`;
   }
   return dataBlob;
 }
@@ -61,7 +61,7 @@ export default class InfiniteList extends React.Component {
       className,    //自定义样式名
       hasNoMore,    //没有更多数据标记位
     } = this.props;
-
+console.warn("InfiniteList data ",list);
     return (
       <ListView
         ref={el => this.lv = el}
@@ -70,7 +70,7 @@ export default class InfiniteList extends React.Component {
         renderFooter={renderFooter?renderFooter:() => (<div style={{ padding: 15, textAlign: 'center' }}>
           { hasNoMore? '没有更多了。':'加载中...' }
         </div>)}
-        renderRow={renderRow}
+        renderRow={this._renderRowItem}
         className={"infinite-list " + className}
         pullToRefresh={<PullToRefresh
           refreshing={this.state.refreshing}
@@ -85,6 +85,13 @@ export default class InfiniteList extends React.Component {
       />
     );
   }
+
+  _renderRowItem = (rowData, sectionID, rowID) => {
+    let { renderRow, list } = this.props;
+    let data = list && list[rowID] || {};
+    return renderRow(data,rowData);
+  };
+
   _onRefresh = ()=> {
     let { onRefresh } = this.props;
     this.setState({

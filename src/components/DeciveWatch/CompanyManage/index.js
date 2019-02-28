@@ -91,9 +91,7 @@ export default class CompanyManage extends React.Component {
       />
     );
   };
-  _renderRowItem = (rowData, sectionID, rowID) => {
-    let { companyList } = this.props;
-    let company = companyList && companyList.list && companyList.list[rowID];
+  _renderRowItem = (company) => {
     return (
       <List.Item
         multipleLine
