@@ -44,7 +44,7 @@ export default class SupervisoryManage extends React.Component {
             renderTabBar={this._renderTabBar}
           >
             {this.menuList &&
-              this.menuList.map((item, index) => this._renderTabContent(index))}
+              this.menuList.map((item, index) => this._renderTabContent(item,index))}
           </Tabs>
         </StickyContainer>
         <WhiteSpace />
@@ -62,13 +62,12 @@ export default class SupervisoryManage extends React.Component {
       </Sticky>
     );
   };
-  _renderTabContent = index => {
-    let type = this.menuList[index].companyType;
-    let listName = type === 0 ? "supervisoryList" : "supervisoryList" + type;
-    let supervList = (this.props[listName] && this.props[listName].list) || [];
-    let maxPage = (this.props[listName] && this.props[listName].pages) || 1;
-    console.log("supervisory manage render tab content,listName is ", listName);
-    console.warn("supervisory render tab list is ", supervList);
+  _renderTabContent = (item,index) => {
+    const type = item.companyType;
+    const listName = type === 0 ? "supervisoryList" : "supervisoryList" + type;
+    const supervList = (this.props[listName] && this.props[listName].list) || [];
+    const maxPage = (this.props[listName] && this.props[listName].pages) || 1;
+    const hasNoMore = this.props[listName] && this.props[listName].list?this.props[listName].pageNum >= maxPage:true;
     return (
       <InfiniteList
         key={index}
@@ -76,7 +75,7 @@ export default class SupervisoryManage extends React.Component {
         list={supervList}
         renderRow={this._renderRowItem}
         pageSize={20}
-        hasNoMore={this.menuList[index].pageIndex >= maxPage}
+        hasNoMore={hasNoMore}
         onEndReached={this._getNewList(index)}
       />
     );

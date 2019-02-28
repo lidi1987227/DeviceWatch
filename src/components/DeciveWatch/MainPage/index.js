@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavBar, Icon, Carousel, Grid } from 'antd-mobile';
-import { getCodeTable} from "../../../sdk";
+import { getCodeTable, getCurrentUserInfo, verify} from "../../../sdk";
 
 export default class MainPage extends React.Component {
   constructor(props){
@@ -20,7 +20,10 @@ export default class MainPage extends React.Component {
   }
 
   componentWillMount(){
-    getCodeTable();
+    verify('10dbb529-be4f-4dd7-a9b9-1c6b985f760b').then(()=>{
+      getCurrentUserInfo();
+      getCodeTable();
+    });
   }
 
   render() {

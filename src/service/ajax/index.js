@@ -169,8 +169,8 @@
       ajax({
         type: "get",
         url: url,
-        // contentType:"Bearer 10dbb529-be4f-4dd7-a9b9-1c6b985f760b",
-        contentType:window.token?window.token:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU0OTYzNjQ2NiwiaWF0IjoxNTQ5MDMxNjY2fQ.PmeN3HfjHiav6QQhJ0fFX8BHPZ1NWiVM0xPXV__q_C8Ye6raf8Oh6CX8sHi2_Gz_MgWEuoaMbe9fPrfn4_kryA",
+        // contentType:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU1MTkzMTI1OSwiaWF0IjoxNTUxMzI2NDU5fQ.ZNu4V3qit9a7LqEvcjxE6_AE_4Z_Pl05r4ycHytI0zfOJBmCcU91zRFz66n7sLNb0on-WNA2OOgp-_LHAe8LGA",
+        contentType:window.token?window.token:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU1MTkzMTI1OSwiaWF0IjoxNTUxMzI2NDU5fQ.ZNu4V3qit9a7LqEvcjxE6_AE_4Z_Pl05r4ycHytI0zfOJBmCcU91zRFz66n7sLNb0on-WNA2OOgp-_LHAe8LGA",
         timeOut: 5000,
         before: function (berf) {
           console.log("before",berf);
@@ -202,7 +202,7 @@
     });
   }
   // 每次登录重新获取token
-  getToken();
+  // getToken();
   window.ajaxGet = ajaxGet;
   window.ajax = ajax;
 })(window);

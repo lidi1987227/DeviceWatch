@@ -26,7 +26,7 @@ export const getSupervisoryList = (conditions={},isMore=false) => {
  * @returns {null} null
  */
 export const getSupervisoryDetail = async (id) => {
-  let url = "/api/check/plan/detail/"+id;
+  const url = `/api/check/detail/detail/${id}`;
   try {
     await ajaxGet(url).then((data) => {
       setSupervisoryDetail(data)
@@ -67,3 +67,12 @@ export const getUsedCheckItemList = async id => {
     console.log("getUsedCheckItemList error",error);
   }
 };
+
+export const updateProduceSupervisorInfo = async data => {
+  const url = '/api/check/detail/updateProduce';
+  try {
+    console.log('updateSupervisor',data);
+  } catch (error) {
+    console.log("updateProduceSupervisorInfo error",error);
+  }
+}

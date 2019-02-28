@@ -9,6 +9,7 @@ import {
   Grid
 } from "antd-mobile";
 import { getSysUserList, getUsedCheckItemList } from "../../../sdk";
+import { setSupervisorInfo } from "../../../ducks/supervisory";
 
 const isIPhone = new RegExp("\\biPhone\\b|\\biPod\\b", "i").test(
   window.navigator.userAgent
@@ -42,7 +43,7 @@ export default class SupervisoryDetail extends React.Component {
   }
 
   render() {
-    const { sysUserList, codeTable } = this.props;
+    const { sysUserList, codeTable, produceSupervisorInfo } = this.props;
     const userList =
       (sysUserList &&
         sysUserList.map(item => ({ label: item.name, value: item.id }))) ||
@@ -57,6 +58,8 @@ export default class SupervisoryDetail extends React.Component {
       route: routeMap.useCheckList
     }));
 
+    const userInfo = localStorage.getItem('user-info')?JSON.parse(localStorage.getItem('user-info')):{};
+
     return (
       <div>
         <NavBar
@@ -70,24 +73,18 @@ export default class SupervisoryDetail extends React.Component {
         <InputItem
           type="text"
           className="supervisory-input"
-          placeholder="张三"
-          clear
-          onChange={v => {
-            console.log("onChange", v);
-          }}
-          onBlur={v => {
-            console.log("onBlur", v);
-          }}
+          defaultValue={userInfo.name}
+          disabled
           moneyKeyboardWrapProps={moneyKeyboardWrapProps}
         >
           监察人员
         </InputItem>
 
-        <Picker data={userList} cols={1}>
+        <Picker data={userList} cols={1} value={produceSupervisorInfo.collaborator} onChange={this.handleCollaborChange}>
           <List.Item arrow="horizontal">协同人员</List.Item>
         </Picker>
 
-        <Picker data={userList} cols={1}>
+        <Picker data={userList} cols={1} value={produceSupervisorInfo.other} onChange={this.handleOtherChange}>
           <List.Item arrow="horizontal">其他人员</List.Item>
         </Picker>
         <WhiteSpace style={{ backgroundColor: "#f5f5f9" }} />
@@ -139,6 +136,14 @@ export default class SupervisoryDetail extends React.Component {
       getUsedCheckItemList(dataItem.id);
     }
     window.goRoute(dataItem.route)
+  }
+
+  handleCollaborChange = value => {
+    setSupervisorInfo({collaborator: value[0]});
+  }
+
+  handleOtherChange = value => {
+    setSupervisorInfo({other: value[0]});
   }
 
 }

@@ -5,6 +5,7 @@ const mapStateToProps = state => ({
   codeTable: state.common.codeTable,
   sysUserList: state.common.sysUserList,
   supervisoryDetail: state.supervisory.supervisoryDetail,
+  produceSupervisorInfo: state.supervisory.produceSupervisorInfo
 });
 
 const mapDispatchToProps = () => ({});

@@ -3,6 +3,10 @@ import * as companyManage from './companyManage';
 import * as checkManage from './checkManage';
 import * as supervisoryReview from './supervisoryReview';
 import * as common from './common';
+import * as authority from './authority';
+
+export const verify = authority.verify;
+export const getCurrentUserInfo = authority.getCurrentUserInfo;
 
 export const getCodeTable = common.getCodeTable;
 export const getSysUserList = common.getSysUserList;
