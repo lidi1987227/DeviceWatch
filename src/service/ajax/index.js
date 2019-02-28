@@ -173,7 +173,7 @@
         contentType:window.token?window.token:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU1MTkzMTI1OSwiaWF0IjoxNTUxMzI2NDU5fQ.ZNu4V3qit9a7LqEvcjxE6_AE_4Z_Pl05r4ycHytI0zfOJBmCcU91zRFz66n7sLNb0on-WNA2OOgp-_LHAe8LGA",
         timeOut: 5000,
         before: function (berf) {
-          console.log("before",berf);
+          console.log("get before",berf);
         },
         success: function (str) {
           let data = JSON.parse(str);
@@ -195,6 +195,40 @@
       });
     });
   };
+
+  const ajaxPost = (url) => {
+    return new Promise((resolve,reject)=>{
+      ajax({
+        type: "post",
+        url: url,
+        // contentType:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU1MTkzMTI1OSwiaWF0IjoxNTUxMzI2NDU5fQ.ZNu4V3qit9a7LqEvcjxE6_AE_4Z_Pl05r4ycHytI0zfOJBmCcU91zRFz66n7sLNb0on-WNA2OOgp-_LHAe8LGA",
+        contentType:window.token?window.token:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU1MTkzMTI1OSwiaWF0IjoxNTUxMzI2NDU5fQ.ZNu4V3qit9a7LqEvcjxE6_AE_4Z_Pl05r4ycHytI0zfOJBmCcU91zRFz66n7sLNb0on-WNA2OOgp-_LHAe8LGA",
+        timeOut: 5000,
+        before: function (berf) {
+          console.log("post before",berf);
+        },
+        success: function (str) {
+          let data = JSON.parse(str);
+          if (data.code === 200) {
+            resolve(data.data); 
+          } else {
+            window.alert(data.message);
+            reject({errCode:data.code,errMsg:data.message});
+          }
+        },
+        error: function (errCode,errMsg) {
+          if (errCode === 404) {
+            window.alert(errMsg,"错误");
+          } else {
+            window.alert("请求失败，请稍后重试。","错误");
+          }
+          reject({errCode,errMsg});
+        }
+      });
+    });
+  };
+
+
   //获取token
   const getToken = () => {
     ajaxGet("/api/auth/verify?code=10dbb529-be4f-4dd7-a9b9-1c6b985f760b").then((data)=>{
@@ -204,5 +238,6 @@
   // 每次登录重新获取token
   // getToken();
   window.ajaxGet = ajaxGet;
+  window.ajaxPost = ajaxPost;
   window.ajax = ajax;
 })(window);
